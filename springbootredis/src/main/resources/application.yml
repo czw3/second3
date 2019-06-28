@@ -1,0 +1,75 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /springbootredis
+
+#数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///myvote
+    username: root
+    password: 123
+
+#映射静态资源
+    static-path-pattern: /**
+
+  resources:
+    static-locations: classpath:/templates/,classpath:/META-NF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/upload
+
+mybatis:
+  type-aliases-package: com.cssl.pojo
+  configuration:
+    auto-mapping-behavior: full
+    use-generated-keys: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  pageSizeZero: true
+
+thymeleaf:
+  encoding: UTF-8
+  #开发时关闭缓存,不然没法看到实时页面
+  #cache: false
+  #prefix: classpath:/templates/  #默认
+  #suffix: .html
+
+
+# Redis数据库
+  redis:
+    database: 0
+    host: 192.168.220.133
+    port: 6379
+    password: 1
+    timeout: 60s #这里在配置的时候需要指明单位
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        min-idle: -1
+        max-idle: 5
+
+# mongodb数据库
+  data:
+    mongodb:
+      uri: mongodb://test:test@192.168.220.133:27017/test
+      #uri: mongodb://localhost:27017/test
+
+#springboot2.1报spring.main.allow-bean-definition-overriding=true
+  #main:
+    #allow-bean-definition-overriding: true
+
+
+
+
+
+
+#默认支持文件上传:本示例上传七牛云
+  #servlet:
+    #multipart:
+      #enabled: true
+      #max-file-size: 10M        #单文件大小
+      #max-request-size: 100M    #总大小
+

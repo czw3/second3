@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+  <a href="kankan">查询全部</a>
+  <table border="1">
+      <tr>
+          <td>ID</td>
+          <td>用户名</td>
+          <td>密码</td>
+      </tr>
+      <tr th:each="u,sta:${list}">
+          <td th:text="${u.getUid()}"></td>
+          <td th:text="${u.getUsername()}"></td>
+          <td th:text="${u.getPassword()}"></td>
+      </tr>
+  </table>
+</body>
+</html>
